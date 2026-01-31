@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Disqus AMP Bridge</title>
+</head>
+<body>
+    <div id="disqus_thread"></div>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const shortname = params.get('shortname');
+        const url = params.get('url');
+
+        var disqus_config = function () {
+            this.page.url = url;
+            this.page.identifier = url;
+        };
+
+        (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://' + shortname + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+</body>
+</html>
